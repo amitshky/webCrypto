@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Encrypt</title>
+</head>
+<body>
+	<div>
+		<label for="">Password:</label><br>
+		<input type="password" id="password"><br>
+		<label for="">Choose a file for encryption:</label><br>
+		<input type="file" id="fileSelector">
+	</div>
+	<br>
+	<div>
+		<a id="saveEncryptedFileBtn" hidden><button>Save Encrypted File</button></a>
+		<a id="saveDecryptedFileBtn" hidden><button>Save Decrypted File</button></a>
+	</div>
+</body>
+<script type="text/javascript" src="encryptFile.js"></script>
+<script>
+	window.onload = async () =>
+	{
+		const passwordField = document.getElementById('password');
+		passwordField.onchange = async () =>
+		{
+			const password = passwordField.value;
+			
+			const fileSelector = document.getElementById('fileSelector');
+			fileSelector.onchange = async (event) =>
+			{
+				const file = event.target.files[0];
+
+				const reader = new FileReader();
+				reader.readAsDataURL(file);
+				const filename = file.name;
+
+				reader.onloadend = async () =>
+				{
+					let url = reader.result;
+					// encrypt file
+					url = await encryptFile(url, password);
+					if (!url)
+						console.error('Unable to encrypt file!');
+
+					const saveEncryptedFileBtn = document.getElementById('saveEncryptedFileBtn');
+					saveEncryptedFileBtn.href = url;
+					saveEncryptedFileBtn.download = filename + '.enc';
+					saveEncryptedFileBtn.hidden = false;
+
+					// decrypt file
+					url = await decryptFile(url, password);
+					if (!url)
+						console.error('Unable to decrypt file!');
+
+					const saveDecryptedFileBtn = document.getElementById('saveDecryptedFileBtn');
+					saveDecryptedFileBtn.href = url;
+					saveDecryptedFileBtn.download = filename;
+					saveDecryptedFileBtn.hidden = false;
+				}
+
+				reader.onerror = () =>
+				{
+					console.error(reader.error);
+				}
+			}
+		}
+	}
+</script>
+</html>

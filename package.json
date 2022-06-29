@@ -1,0 +1,26 @@
+{
+  "name": "encryption",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "npm run encrypt",
+    "encrypt": "tsc src/encryptFile.ts -w --outDir ./pages/encrypt/ --target es2017 --strict true --esModuleInterop true --moduleResolution node",
+    "testing": "tsc src/testing.ts --outDir ./build/ --target es2017 --strict true --esModuleInterop true --module CommonJS && node build/testing.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.0.2",
+    "crypto-js": "^4.1.1",
+    "webcrypto": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/bootstrap": "^5.0.2",
+    "@types/crypto-js": "^4.1.1",
+    "@types/jquery": "^3.5.14",
+    "@types/node": "^17.0.45",
+    "@types/webcrypto": "^0.0.28"
+  }
+}

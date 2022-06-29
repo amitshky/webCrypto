@@ -1,0 +1,12 @@
+node_modules/
+build/
+
+*.js
+*.code-workspace
+*.ini
+*.enc
+
+!lib/**/*.js
+!pages/encrypt/read.ini
+!pages/encrypt/encryptString.js
+!pages/encrypt/encryptFile.js
