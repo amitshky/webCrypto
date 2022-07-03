@@ -9,6 +9,7 @@
     "encryptString": "nodemon src/encryptString.ts",
     "basic": "nodemon src/basic.ts",
     "rsaSignature": "nodemon src/rsaSignature.ts",
+    "rsaEncryption": "nodemon src/rsaEncryption.ts",
     "testing": "nodemon src/testing.ts"
   },
   "keywords": [],
