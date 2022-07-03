@@ -2,7 +2,7 @@
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
     "target": "es2017",
-    "module": "ES6",
+    "module": "CommonJS",
     "rootDir": "./",
     "outDir": "./build",
     "esModuleInterop": true,
@@ -10,5 +10,5 @@
     "skipLibCheck": true,
     "moduleResolution": "node"
   },
-  "exclude": ["./src/testing.ts"]
+  "exclude": ["./src/testing.ts", "./src/encryptFile.ts"]
 }

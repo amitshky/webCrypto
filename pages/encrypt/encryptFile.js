@@ -1,4 +1,10 @@
 "use strict";
+const uint8ArrayToBase64 = (u8Arr) => {
+    let b64 = '';
+    for (let item of u8Arr)
+        b64 += String.fromCharCode(item);
+    return window.btoa(b64);
+};
 // returns URL of the encrypted Blob object
 const encryptFile = async (blobUrl, password) => {
     // PBKDF2 generates a secure encryption key from a password, this reduces vulnerabilities of brute-force attack,
@@ -25,11 +31,11 @@ const encryptFile = async (blobUrl, password) => {
     if (!passphraseKey)
         return null;
     // derive array of bits from passphraseKey
-    let pbkdf2U8Arr = await window.crypto.subtle.deriveBits({ name: 'PBKDF2', salt: pbkdf2Salt, iterations: pbkdf2Iteration, hash: 'SHA-256' }, passphraseKey, 384)
+    let pbkdf2U8Arr = await window.crypto.subtle.deriveBits({ name: 'PBKDF2', salt: pbkdf2Salt, iterations: pbkdf2Iteration, hash: 'SHA-256' }, passphraseKey, 384) // derive 384 bits = 48 bytes
         .catch((err) => { console.error(err); return null; });
     if (!pbkdf2U8Arr)
         return null;
-    pbkdf2U8Arr = new Uint8Array(pbkdf2U8Arr);
+    pbkdf2U8Arr = new Uint8Array(pbkdf2U8Arr); // length: 48 (from 3)
     const keyU8Arr = pbkdf2U8Arr.slice(0, 32); // key for AES encryption
     const ivU8Arr = pbkdf2U8Arr.slice(32); // Initialization Vector to be used along with key for AES encryption
     // generate cryptographic key for AES-CBC
