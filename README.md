@@ -18,3 +18,12 @@ npm install
 ```
 npm run <npm_script_name>
 ```
+
+## Debug
+* Run the command in vscode integrated terminal
+
+example:
+```
+npm run debug:rsaEncryption
+```
+* Run debug configuration (F5) (run the attach configuration).
