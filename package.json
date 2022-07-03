@@ -5,12 +5,14 @@
   "main": "main.js",
   "scripts": {
     "start": "npm run encryptFile",
+    
     "encryptFile": "tsc src/encryptFile.ts -w --outDir ./pages/encrypt/ --target es2017 --strict true --esModuleInterop true --moduleResolution node",
     "encryptString": "nodemon src/encryptString.ts",
-    "basic": "nodemon src/basic.ts",
     "rsaSignature": "nodemon src/rsaSignature.ts",
     "rsaEncryption": "nodemon src/rsaEncryption.ts",
+    "nodeCrypto": "nodemon src/nodeCrypto.ts",
     "testing": "nodemon src/testing.ts",
+
     "debug:rsaEncryption": "nodemon --watch src/rsaEncryption.ts --exec node --inspect -r ts-node/register src/rsaEncryption.ts"
   },
   "keywords": [],
