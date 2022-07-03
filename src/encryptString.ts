@@ -12,7 +12,7 @@ const encrypt = async (plaintext: string, password: string): Promise<string> =>
 	const pbkdf2Key: CryptoKey = await crypto.subtle.importKey('raw', passwordU8Arr, { name: 'PBKDF2' }, false, ['deriveBits']);
 	const pbkdf2KeyU8Arr: Uint8Array = new Uint8Array(await crypto.subtle.deriveBits({ name: 'PBKDF2', iterations: 10000, salt: pbkdf2Salt, hash: 'SHA-256' }, pbkdf2Key, 384));
 
-	const key: CryptoKey = await crypto.subtle.importKey('raw', pbkdf2KeyU8Arr.slice(0, 32), { name: 'AES-CBC', length: 256 }, false, ['encrypt']);
+	const key: CryptoKey = await crypto.subtle.importKey('raw', pbkdf2KeyU8Arr.slice(0, 32), { name: 'AES-CBC', length: 256 }, true, ['encrypt']);
 	const iv: Uint8Array = pbkdf2KeyU8Arr.slice(32);
 
 	const encryptedU8Arr: Uint8Array = new Uint8Array(await crypto.subtle.encrypt({ name: 'AES-CBC', iv: iv }, key, plaintextU8Arr));
@@ -49,12 +49,12 @@ const decrypt = async (ciphertext: string, password: string): Promise<string> =>
 		.then((res) => 
 		{
 			console.log('encrypted string:', res);
-			decrypt('hl', 'hello')
+			decrypt(res, 'hello')
 				.then((res) => 
 				{
 					console.log('decrypted string:', res);
 				})
-				.catch(_ => console.log(`Couldn't decrypt the input string!`));
+				.catch(err => console.log(`Unable decrypt the input string! ERROR:\n`, err));
 		})
-		.catch(_ => console.log(`Couldn't encrypt the input string!`));
+		.catch(err => console.log(`Unable encrypt the input string! ERROR:\n`, err));
 })();
