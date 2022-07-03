@@ -45,16 +45,20 @@ const decrypt = async (ciphertext: string, password: string): Promise<string> =>
 
 (() =>
 {
-	encrypt('hello', 'hello')
+	const inputStr: string = 'hello';
+	const password: string = 'password';
+	console.log('input string:', inputStr);
+
+	encrypt(inputStr, password)
 		.then((res) => 
 		{
 			console.log('encrypted string:', res);
-			decrypt(res, 'hello')
+			decrypt(res, password)
 				.then((res) => 
 				{
 					console.log('decrypted string:', res);
 				})
-				.catch(err => console.log(`Unable decrypt the input string! ERROR:\n`, err));
+				.catch(err => console.error(`Unable decrypt the input string! ERROR:\n`, err));
 		})
-		.catch(err => console.log(`Unable encrypt the input string! ERROR:\n`, err));
+		.catch(err => console.error(`Unable encrypt the input string! ERROR:\n`, err));
 })();
