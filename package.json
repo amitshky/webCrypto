@@ -4,11 +4,12 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "npm run encryptfile",
-    "encryptfile": "tsc src/encryptFile.ts -w --outDir ./pages/encrypt/ --target es2017 --strict true --esModuleInterop true --moduleResolution node",
-    "encryptstring": "tsc src/encryptString.ts --outDir ./build/ --target es2017 --strict true --esModuleInterop true --moduleResolution node --module CommonJS && node build/encryptString.js",
-    "basic": "tsc src/basic.ts --outDir ./build/ --target es2017 --strict true --esModuleInterop true --moduleResolution node --module CommonJS && node build/basic.js",
-    "testing": "tsc src/testing.ts --outDir ./build/ --target es2017 --strict true --esModuleInterop true --module CommonJS && node build/testing.js"
+    "start": "npm run encryptFile",
+    "encryptFile": "tsc src/encryptFile.ts -w --outDir ./pages/encrypt/ --target es2017 --strict true --esModuleInterop true --moduleResolution node",
+    "encryptString": "nodemon src/encryptString.ts",
+    "basic": "nodemon src/basic.ts",
+    "rsaSignature": "nodemon src/rsaSignature.ts",
+    "testing": "nodemon src/testing.ts"
   },
   "keywords": [],
   "author": "",

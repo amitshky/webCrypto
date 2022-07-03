@@ -43,7 +43,7 @@ const decrypt = async (ciphertext: string, password: string): Promise<string> =>
 	return plaintext;
 }
 
-(() =>
+(async () =>
 {
 	const inputStr: string = 'hello';
 	const password: string = 'password';
