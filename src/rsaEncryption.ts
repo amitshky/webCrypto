@@ -4,6 +4,8 @@ const crypto = webcrypto as unknown as Crypto;
 (async () =>
 {
 	let plaintext: Buffer = Buffer.from('hello', 'utf-8');
+	console.log('plaintext:', plaintext.toString('utf-8'), '\n');
+
 	const rsaKey: CryptoKeyPair = await crypto.subtle.generateKey({ 
 		name: 'RSA-OAEP', 
 		modulusLength: 2048, 

@@ -10,7 +10,8 @@
     "basic": "nodemon src/basic.ts",
     "rsaSignature": "nodemon src/rsaSignature.ts",
     "rsaEncryption": "nodemon src/rsaEncryption.ts",
-    "testing": "nodemon src/testing.ts"
+    "testing": "nodemon src/testing.ts",
+    "debug:rsaEncryption": "nodemon --watch src/rsaEncryption.ts --exec node --inspect -r ts-node/register src/rsaEncryption.ts"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,8 @@
   },
   "devDependencies": {
     "@types/crypto-js": "^4.1.1",
-    "@types/node": "^18.0.0"
+    "@types/node": "^18.0.0",
+    "nodemon": "^2.0.18",
+    "ts-node": "^10.8.2"
   }
 }
