@@ -18,6 +18,10 @@ npm install
 ```
 npm run <npm_script_name>
 ```
+example:
+```
+npm run rsaEncryption
+```
 
 ## Debug
 * Run the command in vscode integrated terminal
