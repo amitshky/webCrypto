@@ -6,13 +6,13 @@
   "scripts": {
     "start": "npm run encryptFile",
 
-    "encryptFile": "tsc src/encryptFile.ts -w --outDir ./pages/encrypt/ --target es2017 --strict true --esModuleInterop true --moduleResolution node",
+    "encryptFile"  : "tsc src/encryptFile.ts -w --outDir ./pages/encrypt/ --target es2017 --strict true --esModuleInterop true --moduleResolution node",
     "encryptString": "nodemon src/encryptString.ts",
-    "rsaSignature": "nodemon src/rsaSignature.ts",
+    "rsaSignature" : "nodemon src/rsaSignature.ts",
     "rsaEncryption": "nodemon src/rsaEncryption.ts",
-    "nodeCrypto": "nodemon src/nodeCrypto.ts",
-    "testing": "nodemon src/testing.ts",
-    "hashing": "nodemon src/hashing.ts",
+    "nodeCrypto"   : "nodemon src/nodeCrypto.ts",
+    "testing"      : "nodemon src/testing.ts",
+    "hashing"      : "nodemon src/hashing.ts",
 
     "debug:rsaEncryption": "nodemon --watch src/rsaEncryption.ts --exec node --inspect -r ts-node/register src/rsaEncryption.ts",
 
